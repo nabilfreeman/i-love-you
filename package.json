@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node main.js"
   },
-  "main": "main.js"
+  "main": "main.js",
   "author": "freeman",
   "devDependencies": {},
   "dependencies": {
