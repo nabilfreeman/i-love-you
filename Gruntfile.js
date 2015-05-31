@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         options: {
           key: process.env.key,
           secret: process.env.secret,
-          bucket: "cosmic.instafork.com"
+          bucket: "iloveyou.instafork.com"
         },
 
         sync: [

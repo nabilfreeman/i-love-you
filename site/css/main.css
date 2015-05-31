@@ -78,7 +78,8 @@ html, body{
 	cursor:pointer;
 	
 	position:absolute;
-	top:50%;
+	top:-webkit-calc(50% + 26px);
+	top:calc(50% + 26px);
 	left:50%;
 	
 	-webkit-transform:translateX(-50%) translateY(-50%);
