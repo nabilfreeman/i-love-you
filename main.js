@@ -9,4 +9,4 @@ var i = new faye.NodeAdapter({
 });
 
 i.attach(server);
-server.listen(8123);
+server.listen(process.env.port);
