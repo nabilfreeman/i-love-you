@@ -37,8 +37,12 @@ client.subscribe("/room1", function(message){
 });
 
 var heart = document.querySelector("#heart");
-heart.addEventListener("click", function(e){
+var handler = function(e){
+	e.preventDefault();
 	client.publish('/room1', {sender: identifier});
-
 	ripple(true);
-});
+	return false;
+}
+
+heart.addEventListener("click", handler);
+heart.addEventListener("touchstart", handler);
