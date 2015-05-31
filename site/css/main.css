@@ -72,8 +72,8 @@ html, body{
 }
 
 #heart{
-	width:286px;
-	height:240px;
+	width:258px;
+	height:232px;
 
 	cursor:pointer;
 	
@@ -86,12 +86,18 @@ html, body{
 }
 
 #heart .box{
-	width:30px;
-	height:30px;
+	width:26px;
+	height:26px;
 	background:transparent;
 	float:left;
-	margin-top:2px;
-	margin-right:2px;
+	margin-top:3px;
+	margin-right:3px;
+	text-align: center;
+	line-height: 26px;
+	font-weight: bold;
+	font-family: 'menlo', monospace;
+	color: #de2121;
+	font-size: 20px;
 }
 
 #heart .box:nth-child(9n){
