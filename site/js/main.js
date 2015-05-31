@@ -8,7 +8,13 @@ var audio = {
 	hero: new Audio('/sounds/hero.mp3')
 };
 
-//TODO - this can all be done with canvas and we would probably see much better performance.
+var canvas = document.querySelector("#ripples");
+var canvas_data = {
+	center_x: 0,
+	center_y: 0
+};
+var ctx = canvas.getContext('2d');
+var ripples = [];
 
 //simple function. cut off the first 1/10th of a second from the audio file to make rapid playing sound good.
 //also, if the ripple is "mine" i.e. this user triggered the ripple, format it differently.
@@ -16,15 +22,73 @@ var ripple = function(mine){
 	audio.hero.currentTime = 0.1;
 	audio.hero.play();
 
-	var el = document.createElement("div");
-	el.classList.add("ripple");
+	var obj = {
+		size: 0,
+		opacity: 1,
+		mine: false
+	};
 
 	if(mine){
-		el.classList.add("mine");
+		obj.mine = true;
 	}
 
-	document.querySelector("#ripples").appendChild(el);
+	ripples.push(obj);
 }
+
+var updateCanvasData = function(){
+	canvas.setAttribute("width", window.innerWidth * 2);
+	canvas.setAttribute("height", window.innerHeight * 2);
+	canvas_data.center_x = window.innerWidth;
+	canvas_data.center_y = window.innerHeight;
+};
+
+window.addEventListener("resize", updateCanvasData);
+updateCanvasData();
+
+var draw = function(){
+	requestAnimationFrame(draw);
+
+	//wipe the frame.
+	ctx.clearRect(0, 0, window.innerWidth * 2, window.innerHeight * 2);
+
+	//for each ripple in existence...
+	ripples.forEach(function(obj, index){
+		//increment circle size and draw the cirlce.
+		obj.size += 6;
+
+		ctx.beginPath();
+		ctx.arc(
+			canvas_data.center_x, 
+			canvas_data.center_y, 
+			obj.size, 0, 2 * Math.PI, 
+			false
+		);
+
+		//fade out the object. 
+		//this gradation was calculated with 1/(1000/6) to reduce at the same race as circle grows.
+		obj.opacity -= 0.006;
+
+		ctx.fillStyle = 'transparent';
+		ctx.fill();
+		ctx.lineWidth = 2;
+
+		//depending on whether the ripple was user triggered or server triggered, set color to white/black.
+		if(obj.mine){
+			ctx.strokeStyle = 'rgba(255,255,255,' + obj.opacity + ")";
+		} else {
+			ctx.strokeStyle = 'rgba(0,0,0,' + obj.opacity + ")";
+		}
+
+		ctx.stroke();
+
+		//delete the ripple from our array when it gets too big.
+		if(obj.size > 1000){
+			ripples.splice(index, 1);
+		}
+	});
+}
+
+draw();
 
 //simple FAYE code
 // var client = new Faye.Client("http://localhost:8123");

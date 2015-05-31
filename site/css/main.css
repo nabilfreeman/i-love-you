@@ -19,58 +19,6 @@ html, body{
 	left:0px;
 }
 
-#ripples .ripple{
-	width:1px;
-	height:1px;
-	border:2px solid #000;
-	border-radius:50%;
-
-	position:absolute;
-	top:50%;
-	left:50%;
-
-	-webkit-animation: ripple 2s ease-out 1;
-	animation: ripple 2s ease-out 1;
-}
-
-#ripples .ripple.mine{
-	border:2px solid #FFF;
-}
-
-@-webkit-keyframes ripple{
-	0%{
-		opacity: 1;
-		width:2px;
-		height:2px;
-		margin-left:-1px;
-		margin-top:-1px;
-	}
-	100%{
-		opacity: 0;
-		width:800px;
-		height:800px;
-		margin-left:-400px;
-		margin-top:-400px;
-	}
-}
-
-@keyframes ripple{
-	0%{
-		opacity: 1;
-		width:2px;
-		height:2px;
-		margin-left:-1px;
-		margin-top:-1px;
-	}
-	100%{
-		opacity: 0;
-		width:800px;
-		height:800px;
-		margin-left:-400px;
-		margin-top:-400px;
-	}
-}
-
 #heart{
 	width:258px;
 	height:232px;
