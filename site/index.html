@@ -172,7 +172,8 @@
 		</div>
 
 
-		<script src="http://localhost:8123/client.js"></script>
+		<!--<script src="http://localhost:8123/client.js"></script>-->
+		<script src="http://cosmic-nfrmn.rhcloud.com/client.js"></script>
 		<script>
 			//this is to figure out later on if the source of a realtime message came from this browser instance. the timestamp / random number combo is to minimize  UID conflicts.
 			var current_timestamp = Math.floor(Date.now() / 1000).toString();
@@ -203,7 +204,8 @@
 			}
 
 			//simple FAYE code
-			var client = new Faye.Client("http://localhost:8123");
+			// var client = new Faye.Client("http://localhost:8123");
+			var client = new Faye.Client("http://cosmic-nfrmn.rhcloud.com:8000");
 			client.subscribe("/room1", function(message){
 				//we are already providing instant response to the user when they click a heart, so we want to disregard the message from the server if it is that same user.
 				if(message.sender !== identifier){
