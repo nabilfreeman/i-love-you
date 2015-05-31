@@ -1,7 +1,10 @@
 {
   "name": "Cosmic",
   "version": "0.0.1",
-  "scripts": {},
+  "scripts": {
+    "start": "node main.js"
+  },
+  "main": "main.js"
   "author": "freeman",
   "devDependencies": {},
   "dependencies": {
