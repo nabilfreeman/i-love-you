@@ -26,6 +26,8 @@ Then, at the bottom of `./site/index.html` adjust the port number & remove/modif
 
 ... Then direct your web server at the `./site` directory and have fun!
 
+NB: The front end is not served through the corresponding nodejs application in this repo.
+
 # releasing
 In `Gruntfile.js` edit the `s3:{}` task to specify your AWS bucket region & name. You can also hardcode key and secret here but be careful with public repos.
 
