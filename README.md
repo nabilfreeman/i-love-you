@@ -1,4 +1,4 @@
-# i love you ❤️
+# i love you :heart:
 making long distance a little easier
 
 # why?
