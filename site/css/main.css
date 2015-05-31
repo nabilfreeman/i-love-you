@@ -1,0 +1,98 @@
+html, body{
+	margin:0px;
+	padding:0px;
+	background:#de2121;
+	height:100%;
+}
+
+#ripples{
+	width:100%;
+	height:100%;
+
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#ripples .ripple{
+	width:1px;
+	height:1px;
+	border:2px solid #000;
+	border-radius:50%;
+
+	position:absolute;
+	top:50%;
+	left:50%;
+
+	-webkit-animation: ripple 2s ease-out 1;
+	animation: ripple 2s ease-out 1;
+}
+
+#ripples .ripple.mine{
+	border:2px solid #FFF;
+}
+
+@-webkit-keyframes ripple{
+	0%{
+		opacity: 1;
+		width:2px;
+		height:2px;
+		margin-left:-1px;
+		margin-top:-1px;
+	}
+	100%{
+		opacity: 0;
+		width:800px;
+		height:800px;
+		margin-left:-400px;
+		margin-top:-400px;
+	}
+}
+
+@keyframes ripple{
+	0%{
+		opacity: 1;
+		width:2px;
+		height:2px;
+		margin-left:-1px;
+		margin-top:-1px;
+	}
+	100%{
+		opacity: 0;
+		width:800px;
+		height:800px;
+		margin-left:-400px;
+		margin-top:-400px;
+	}
+}
+
+#heart{
+	width:286px;
+	height:240px;
+
+	cursor:pointer;
+	
+	position:absolute;
+	top:50%;
+	left:50%;
+	
+	-webkit-transform:translateX(-50%) translateY(-50%);
+	transform:translateX(-50%) translateY(-50%);
+}
+
+#heart .box{
+	width:30px;
+	height:30px;
+	background:transparent;
+	float:left;
+	margin-top:2px;
+	margin-right:2px;
+}
+
+#heart .box:nth-child(9n){
+	margin-right:0px;
+}
+
+#heart .box.white{
+	background:#FFF;
+}
