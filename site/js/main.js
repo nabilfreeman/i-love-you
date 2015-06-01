@@ -3,11 +3,36 @@ var current_timestamp = Math.floor(Date.now() / 1000).toString();
 var random_number = Math.floor(Math.random() * 1000000000).toString();
 var identifier = current_timestamp + "" + random_number;
 
-var audio = {
-	submarine: new Audio('/sounds/submarine.mp3'),
-	hero: new Audio('/sounds/hero.mp3')
-};
+//play a sound when a ripple occurs using the WebAudio API.
+var sound;
 
+function playSound() {
+	if(sound !== undefined){
+	    var source = audio_context.createBufferSource();
+	    source.buffer = sound;
+	    source.connect(audio_context.destination);
+
+	    source.start(0);
+	}
+}
+
+//check that our browser supports the web audio api.
+if(window.AudioContext || window.webkitAudioContext){
+	var audio_url = '/sounds/hero.mp3';
+
+	var audio_context = new (window.AudioContext || window.webkitAudioContext)();
+	var sound_request = new XMLHttpRequest();
+	sound_request.open('GET', audio_url, true);
+	sound_request.responseType = 'arraybuffer';
+	sound_request.onload = function() {
+	    audio_context.decodeAudioData(sound_request.response, function(buffer) {
+	        sound = buffer;
+	    });
+	};
+	sound_request.send();
+}
+
+//set up our canvas data.
 var canvas = document.querySelector("#ripples");
 var canvas_data = {
 	center_x: 0,
@@ -19,8 +44,7 @@ var ripples = [];
 //simple function. cut off the first 1/10th of a second from the audio file to make rapid playing sound good.
 //also, if the ripple is "mine" i.e. this user triggered the ripple, format it differently.
 var ripple = function(mine){
-	audio.hero.currentTime = 0.1;
-	audio.hero.play();
+	playSound();
 
 	var obj = {
 		size: 0,
