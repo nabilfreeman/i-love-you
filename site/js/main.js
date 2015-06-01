@@ -99,6 +99,10 @@ var draw = function(){
 		//this gradation was calculated with 1/(1000/6) to reduce at the same race as circle grows.
 		obj.opacity -= canvas_data.opacity_decrement;
 
+		if(obj.opacity < 0){
+			obj.opacity = 0;
+		}
+
 		ctx.fillStyle = 'transparent';
 		ctx.fill();
 		ctx.lineWidth = 2;
