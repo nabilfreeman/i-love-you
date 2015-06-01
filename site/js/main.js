@@ -69,7 +69,7 @@ var updateCanvasData = function(){
 	canvas_data.center_x = window.innerWidth;
 	canvas_data.center_y = window.innerHeight;
 	canvas_data.ripple_max_size = (window.innerWidth > window.innerHeight ? window.innerWidth : window.innerHeight);
-	canvas_data.ripple_increment = canvas_data.ripple_max_size / 100;
+	canvas_data.ripple_increment = canvas_data.ripple_max_size / 60;
 	canvas_data.opacity_decrement = 1 / (canvas_data.ripple_max_size / canvas_data.ripple_increment); 
 };
 
