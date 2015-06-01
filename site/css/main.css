@@ -20,18 +20,33 @@ html, body{
 }
 
 #heart{
+	-webkit-transition:0.1s;
+	transition:0.1s;
+
 	width:258px;
 	height:232px;
 
 	cursor:pointer;
 	
 	position:absolute;
-	top:-webkit-calc(50% + 26px);
-	top:calc(50% + 26px);
-	left:50%;
-	
-	-webkit-transform:translateX(-50%) translateY(-50%);
-	transform:translateX(-50%) translateY(-50%);
+
+	top:-webkit-calc(50% + 26px - 116px);
+	top:calc(50% + 26px - 116px);
+
+	left:-webkit-calc(50% - 129px);
+	left:calc(50% - 129px);
+
+	-webkit-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+	-webkit-transform:scale(1);
+	transform:scale(1);
+}
+
+#heart:active{
+	-webkit-transition:none;
+	transition:none;
+	-webkit-transform:scale(0.98);
+	transform:scale(0.98);
 }
 
 #heart .box{
@@ -56,8 +71,11 @@ html, body{
 		width:204px;
 		height:184px;
 
-		top:-webkit-calc(50% + 20px);
-		top:calc(50% + 20px);
+		top:-webkit-calc(50% + 20px - 92px);
+		top:calc(50% + 20px - 92px);
+
+		left:-webkit-calc(50% - 102px);
+		left:calc(50% - 102px);
 	}
 
 	#heart .box{
