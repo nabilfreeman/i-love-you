@@ -21,6 +21,9 @@ html, body{
 
 #heart{
 	-webkit-transition:0.1s;
+	-moz-transition:0.1s;
+	-ms-transition:0.1s;
+	-o-transition:0.1s;
 	transition:0.1s;
 
 	width:258px;
@@ -31,21 +34,41 @@ html, body{
 	position:absolute;
 
 	top:-webkit-calc(50% + 26px - 116px);
+	top:-moz-calc(50% + 26px - 116px);
+	top:-ms-calc(50% + 26px - 116px);
+	top:-o-calc(50% + 26px - 116px);
 	top:calc(50% + 26px - 116px);
 
 	left:-webkit-calc(50% - 129px);
+	left:-moz-calc(50% - 129px);
+	left:-ms-calc(50% - 129px);
+	left:-o-calc(50% - 129px);
 	left:calc(50% - 129px);
 
 	-webkit-transform-origin:50% 50%;
+	-moz-transform-origin:50% 50%;
+	-ms-transform-origin:50% 50%;
+	-o-transform-origin:50% 50%;
 	transform-origin:50% 50%;
+
 	-webkit-transform:scale(1);
+	-moz-transform:scale(1);
+	-ms-transform:scale(1);
+	-o-transform:scale(1);
 	transform:scale(1);
 }
 
 #heart:active{
 	-webkit-transition:none;
+	-moz-transition:none;
+	-ms-transition:none;
+	-o-transition:none;
 	transition:none;
+
 	-webkit-transform:scale(0.98);
+	-moz-transform:scale(0.98);
+	-ms-transform:scale(0.98);
+	-o-transform:scale(0.98);
 	transform:scale(0.98);
 }
 
@@ -63,6 +86,10 @@ html, body{
 	color: #de2121;
 	font-size: 20px;
 
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	-o-user-select:none;
 	user-select:none;
 }
 
@@ -72,9 +99,15 @@ html, body{
 		height:184px;
 
 		top:-webkit-calc(50% + 20px - 92px);
+		top:-moz-calc(50% + 20px - 92px);
+		top:-ms-calc(50% + 20px - 92px);
+		top:-o-calc(50% + 20px - 92px);
 		top:calc(50% + 20px - 92px);
 
 		left:-webkit-calc(50% - 102px);
+		left:-moz-calc(50% - 102px);
+		left:-ms-calc(50% - 102px);
+		left:-o-calc(50% - 102px);
 		left:calc(50% - 102px);
 	}
 
