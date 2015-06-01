@@ -51,10 +51,67 @@ html, body{
 	user-select:none;
 }
 
+@media screen and (max-width:600px){
+	#heart{
+		width:204px;
+		height:184px;
+
+		top:-webkit-calc(50% + 20px);
+		top:calc(50% + 20px);
+	}
+
+	#heart .box{
+		width:20px;
+		height:20px;
+		line-height:20px;
+		font-size:16px;
+	}
+}
+
 #heart .box:nth-child(9n){
 	margin-right:0px;
 }
 
 #heart .box.white{
 	background:#FFF;
+}
+
+footer{
+	position:absolute;
+	bottom:10px;
+	left:0px;
+	width:100%;
+	text-align:center;
+
+	color:#FFF;
+	font-family: 'menlo', monospace;
+	line-height:30px;
+
+	font-size:16px;
+}
+
+footer img{
+	height:30px;
+	vertical-align:middle;
+	margin-top:-10px;
+	margin-right:5px;
+}
+
+footer a{
+	color:#FFF;
+}
+
+@media screen and (max-width:600px){
+	footer{
+		font-size:13px;
+	}
+
+	footer img{
+		margin-top:-7px;
+		height:24px;
+	}
+
+	footer a{
+		display:block;
+	}
 }
