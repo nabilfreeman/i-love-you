@@ -15,6 +15,8 @@ var canvas_data = {
 };
 var ctx = canvas.getContext('2d');
 var ripples = [];
+// set channame based #
+var channame = (Boolean(location.hash)) ? location.hash.substr(1) : "default_chan_name"
 
 //simple function. cut off the first 1/10th of a second from the audio file to make rapid playing sound good.
 //also, if the ripple is "mine" i.e. this user triggered the ripple, format it differently.
@@ -93,7 +95,7 @@ draw();
 //simple FAYE code
 // var client = new Faye.Client("http://localhost:8123");
 var client = new Faye.Client("http://cosmic-nfrmn.rhcloud.com:8000");
-client.subscribe("/room1", function(message){
+client.subscribe("/"+channame, function(message){
 	//we are already providing instant response to the user when they click a heart, so we want to disregard the message from the server if it is that same user.
 	if(message.sender !== identifier){
 		ripple(false);
@@ -103,7 +105,7 @@ client.subscribe("/room1", function(message){
 var heart = document.querySelector("#heart");
 var handler = function(e){
 	e.preventDefault();
-	client.publish('/room1', {sender: identifier});
+	client.publish('/'+channame, {sender: identifier});
 	ripple(true);
 	return false;
 }
