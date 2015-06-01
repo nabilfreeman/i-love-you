@@ -36,7 +36,9 @@ if(window.AudioContext || window.webkitAudioContext){
 var canvas = document.querySelector("#ripples");
 var canvas_data = {
 	center_x: 0,
-	center_y: 0
+	center_y: 0,
+	ripple_increment: 6,
+	opacity_decrement: 0.1
 };
 var ctx = canvas.getContext('2d');
 var ripples = [];
@@ -66,6 +68,9 @@ var updateCanvasData = function(){
 	canvas.setAttribute("height", window.innerHeight * 2);
 	canvas_data.center_x = window.innerWidth;
 	canvas_data.center_y = window.innerHeight;
+	canvas_data.ripple_max_size = (window.innerWidth > window.innerHeight ? window.innerWidth : window.innerHeight);
+	canvas_data.ripple_increment = canvas_data.ripple_max_size / 100;
+	canvas_data.opacity_decrement = 1 / (canvas_data.ripple_max_size / canvas_data.ripple_increment); 
 };
 
 window.addEventListener("resize", updateCanvasData);
@@ -80,7 +85,7 @@ var draw = function(){
 	//for each ripple in existence...
 	ripples.forEach(function(obj, index){
 		//increment circle size and draw the cirlce.
-		obj.size += 6;
+		obj.size += canvas_data.ripple_increment;
 
 		ctx.beginPath();
 		ctx.arc(
@@ -92,7 +97,7 @@ var draw = function(){
 
 		//fade out the object. 
 		//this gradation was calculated with 1/(1000/6) to reduce at the same race as circle grows.
-		obj.opacity -= 0.006;
+		obj.opacity -= canvas_data.opacity_decrement;
 
 		ctx.fillStyle = 'transparent';
 		ctx.fill();
@@ -108,7 +113,7 @@ var draw = function(){
 		ctx.stroke();
 
 		//delete the ripple from our array when it gets too big.
-		if(obj.size > 1000){
+		if(obj.size > canvas_data.ripple_max_size){
 			ripples.splice(index, 1);
 		}
 	});
