@@ -15,6 +15,8 @@ Tap the heart on the page, and a ripple is transmitted to everybody else on that
 
 You can test it out here. Thanks to the Red Hat Openshift free tier, the nodejs part of this app is hosted online!
 
+Try out a private room, by going to http://iloveyou.instafork.com/#room123. Thanks to @gotbadger for implementing this feature!
+
 # installation
 
     npm install
