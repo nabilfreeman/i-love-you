@@ -14,6 +14,9 @@ function playSound() {
 
 	    source.start(0);
 	}
+	if('vibrate' in window.navigator){
+		window.navigator.vibrate(300);
+	}
 }
 
 //check that our browser supports the web audio api.
