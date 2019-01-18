@@ -1,5 +1,6 @@
 {
-    "version": 3,
+    "version": 4,
+    "name": "i-love-you",
     "builds": [
         { "src": "main.js", "use": "@now/node" }
     ]
